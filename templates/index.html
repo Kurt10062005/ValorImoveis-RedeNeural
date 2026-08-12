@@ -1,0 +1,243 @@
+<!--
+AUTORES:
+    Felipe Kuznik Thome 
+    Kurt Cobain  Rodrigues 
+    Pedro Ghinzelli
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Valor de Imóveis</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <header id="header1">
+        <h1 id="titulo1">
+            AVALIAÇÃO DE IMÓVEIS
+        </h1>
+    </header>
+
+    <div class="interface">
+        <div class="mapa">
+            <header id="enunciado1">
+                <h2>
+                    Escolha uma casa no mapa abaixo
+                </h2>
+            </header>
+
+            <div id="mapa"></div>
+        </div>
+
+        <div class="simulacao">
+            <header id="enunciado2">
+                <h2>
+                    Simule o valor de uma casa com suas características específicas
+                </h2>
+            </header>
+
+            <form action="/enviar" method="post">
+                <div class="campo-form">
+                    <label for="id">ID:</label>
+                    <input type="text" id="id" name="id">
+                </div>
+
+                <div class="campo-form">
+                    <label for="data_venda">Data da última venda</label>
+                    <input type="date" id="data_venda" name="data">
+                </div>
+
+                <div class="campo-form">
+                    <label for="quartos">Quartos</label>
+                    <input type="number" id="quartos" name="quartos" min="0" max="33" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="banheiros">Banheiros</label>
+                    <input type="number" id="banheiros" name="banheiros" min="0" max="8" step="0.5">
+                </div>
+
+                <div class="campo-form">
+                    <label for="area_living">Área útil (pés quadrados - ft²)</label>
+                    <input type="number" id="area_living" name="area_living" min="290" max="13540" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="area_lote">Área total do terreno (pés quadrados - ft²)</label>
+                    <input type="number" id="area_lote" name="area_lote" min="520" max="1650000" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="andares">Andares</label>
+                    <input type="number" id="andares" name="andares" min="1" max="3.5" step="0.5">
+                </div>
+
+                <div class="campo-form">
+                    <label for="waterfront">Vista para a água</label>
+                    <select id="waterfront" name="waterfront" required>
+                        <option value="" selected disabled hidden>
+                            Deseja alguma casa com vista ao mar ou lago
+                        </option>
+                        <option value="0">Não</option>
+                        <option value="1">Sim</option>
+                    </select>
+                </div>
+
+                <div class="campo-form">
+                    <label for="view">Qualidade da vista da casa</label>
+                    <input type="number" id="view" name="view" min="0" max="4" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="condicao">Condição</label>
+                    <input type="number" id="condicao" name="condicao" min="0" max="5" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="grade">Avaliação da Prefeitura</label>
+                    <input type="number" id="grade" name="grade" min="1" max="13" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="area_shove">Área construída acima do solo (ft²)</label>
+                    <input type="number" id="area_shove" name="area_shove" min="290" max="9410" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="area_basement">Área do porão (ft²)</label>
+                    <input type="number" id="area_basement" name="area_basement" min="290" max="9410" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="ano_construcao">Ano da construção</label>
+                    <input type="number" id="ano_construcao" name="ano_construcao" min="1900" max="2015" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="ano_reforma">Ano da última reforma</label>
+                    <input type="number" id="ano_reforma" name="ano_reforma" min="0" max="2015" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="cep">CEP</label>
+                    <input type="number" id="cep" name="cep" min="98000" max="98200" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="lat">Latitude do imóvel</label>
+                    <input type="number" id="lat" name="lat" min="47.2" max="47.8" step="0.000001">
+                </div>
+
+                <div class="campo-form">
+                    <label for="long">Longitude do imóvel</label>
+                    <input type="number" id="long" name="long" min="-123" max="-121" step="0.000001">
+                </div>
+
+                <div class="campo-form">
+                    <label for="area_living15">Área útil dos imóveis vizinhos (ft²)</label>
+                    <input type="number" id="area_living15" name="area_living15" min="399" max="6210" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="area_lote15">Média da área dos terrenos vizinhos (ft²)</label>
+                    <input type="number" id="area_lote15" name="area_lote15" min="651" max="8710000" step="1">
+                </div>
+
+                <button type="submit">Calcular</button>
+            </form>
+
+            <div class="preco-casa">
+                <span>Valor calculado para a simulação</span>
+                <strong>-</strong>
+            </div>
+        </div>
+    </div>
+
+    <div id="janelaCasa">
+        <div class="janela-casa-header">
+            <h2>Informações do imóvel</h2>
+            <button type="button" id="fecharJanela">X</button>
+        </div>
+
+        <div class="janela-casa-conteudo">
+            <form>
+                <label for="casa_id">ID:</label>
+                <input type="text" id="casa_id" readonly>
+
+                <label for="casa_data">Data da última venda</label>
+                <input type="date" id="casa_data" readonly>
+
+                <label for="casa_quartos">Quartos</label>
+                <input type="number" id="casa_quartos" readonly>
+
+                <label for="casa_banheiros">Banheiros</label>
+                <input type="number" id="casa_banheiros" readonly>
+
+                <label for="casa_area_living">Área útil (pés quadrados - ft²)</label>
+                <input type="number" id="casa_area_living" readonly>
+
+                <label for="casa_area_lote">Área total do terreno (pés quadrados - ft²)</label>
+                <input type="number" id="casa_area_lote" readonly>
+
+                <label for="casa_andares">Andares</label>
+                <input type="number" id="casa_andares" readonly>
+
+                <label for="casa_waterfront">Vista para a água</label>
+                <input type="text" id="casa_waterfront" readonly>
+
+                <label for="casa_view">Qualidade da vista da casa</label>
+                <input type="number" id="casa_view" readonly>
+
+                <label for="casa_condicao">Condição</label>
+                <input type="number" id="casa_condicao" readonly>
+
+                <label for="casa_grade">Avaliação da Prefeitura</label>
+                <input type="number" id="casa_grade" readonly>
+
+                <label for="casa_area_shove">Área construída acima do solo (pés quadrados - ft²)</label>
+                <input type="number" id="casa_area_shove" readonly>
+
+                <label for="casa_area_basement">Área do porão (pés quadrados - ft²)</label>
+                <input type="number" id="casa_area_basement" readonly>
+
+                <label for="casa_ano_construcao">Ano da construção</label>
+                <input type="number" id="casa_ano_construcao" readonly>
+
+                <label for="casa_ano_reforma">Ano da última reforma</label>
+                <input type="number" id="casa_ano_reforma" readonly>
+
+                <label for="casa_cep">CEP</label>
+                <input type="number" id="casa_cep" readonly>
+
+                <label for="casa_lat">Latitude do imóvel</label>
+                <input type="number" id="casa_lat" readonly>
+
+                <label for="casa_long">Longitude do imóvel</label>
+                <input type="number" id="casa_long" readonly>
+
+                <label for="casa_area_living15">Área útil dos imóveis vizinhos (pés quadrados - ft²)</label>
+                <input type="number" id="casa_area_living15" readonly>
+
+                <label for="casa_area_lote15">Média da área dos terrenos vizinhos (pés quadrados - ft²)</label>
+                <input type="number" id="casa_area_lote15" readonly>
+
+                <label for="casa_preco_real">Preço de venda real do imóvel</label>
+                <input type="text" id="casa_preco_real" readonly>
+
+                <div class="preco-casa">
+                    <span>Valor estimado pela IA (RNA)</span>
+                    <strong id="casa_preco_estimado">-</strong>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/static/js/mapa.js?v=3"></script>
+</body>
+
+</html>

@@ -1,0 +1,253 @@
+/*===================================================
+AUTORES:
+    Felipe Kuznik Thome 
+    Kurt Cobain  Rodrigues 
+    Pedro Ghinzelli
+=====================================================*/
+
+/* ==================================================
+   CONFIGURAÇÕES GERAIS
+================================================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    overflow: hidden; /* Trava a rolagem da página inteira */
+}
+
+/* ==================================================
+   CABEÇALHO PRINCIPAL
+================================================== */
+#header1 {
+    width: 100%;
+    height: 76px;
+    padding: 20px;
+    background-color: #1f4e79;
+    text-align: center;
+}
+
+#titulo1 {
+    margin: 0;
+    color: white;
+    font-size: 32px;
+    line-height: 36px;
+}
+
+/* ==================================================
+   INTERFACE PRINCIPAL (MUDANÇA CHAVE AQUI)
+================================================== */
+.interface {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 76px); 
+    overflow: hidden;
+}
+
+/* ==================================================
+   ÁREA DO MAPA (LADO ESQUERDO)
+================================================== */
+.mapa {
+    width: 60%;
+    height: 100%;
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+#enunciado1 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#enunciado1 h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+#mapa {
+    width: 100%;
+    flex: 1; 
+    border: 2px solid black;
+}
+
+/* ==================================================
+   ÁREA DE SIMULAÇÃO (LADO DIREITO - COM SCROLL PRÓPRIO)
+================================================== */
+.simulacao {
+    width: 40%;
+    height: 100%;
+    padding: 20px;
+    background-color: #eeeeee;
+    overflow-y: auto; 
+}
+
+#enunciado2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#enunciado2 h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+/* ==================================================
+   FORMULÁRIO DA SIMULAÇÃO
+================================================== */
+.simulacao form {
+    width: 100%;
+}
+
+.campo-form {
+    margin-bottom: 15px;
+}
+
+.simulacao label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.simulacao input,
+.simulacao select {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    font-size: 15px;
+    background-color: white;
+}
+
+.simulacao button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1f4e79;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.simulacao button:hover {
+    background-color: #163a5c;
+}
+
+/* ==================================================
+   JANELA FLUTUANTE DO IMÓVEL (MODAL POR CIMA DE TUDO)
+================================================== */
+#janelaCasa {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 600px;
+    max-width: 90vw;
+    max-height: 85vh;
+    background-color: white;
+    border: 1px solid #999;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    z-index: 999999; 
+    overflow: hidden;
+}
+
+.janela-casa-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    padding: 0 15px 0 20px;
+    background-color: #1f4e79;
+    color: white;
+}
+
+.janela-casa-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+#fecharJanela {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    font-size: 28px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+#fecharJanela:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.janela-casa-conteudo {
+    width: 100%;
+    height: calc(100% - 60px);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.janela-casa-conteudo form {
+    width: 100%;
+}
+
+.janela-casa-conteudo label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.janela-casa-conteudo label:first-child {
+    margin-top: 0;
+}
+
+.janela-casa-conteudo input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #eeeeee;
+    color: #333;
+}
+
+.preco-casa {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 7px;
+    background-color: #eeeeee;
+    text-align: center;
+}
+
+.preco-casa span {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #555;
+}
+
+.preco-casa strong {
+    display: block;
+    font-size: 25px;
+    color: #1f4e79;
+}
