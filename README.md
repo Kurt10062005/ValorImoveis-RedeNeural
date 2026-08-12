@@ -59,3 +59,50 @@ O FastAPI gera a documentação interativa automaticamente. Para testar as rotas
 
 * Swagger UI: http://127.0.0.1:8000/docs
 * ReDoc: http://127.0.0.1:8000/redoc
+
+## Passo passo para clonar o repositório
+1. Abrir o Terminal
+Abra o PowerShell, CMD ou o terminal dentro do VS Code na pasta onde deseja salvar o projeto.
+
+2. Executar o Comando de Clone
+Digite o comando git clone seguido do link do repositório:
+
+[git clone https://github.com/Kurt10062005/ValorImoveis-RedeNeural.git]
+
+3. Entrar na Pasta do Projeto
+Após o download ser concluído, acesse a pasta criada:
+
+[cd ValorImoveis-RedeNeural]
+
+4. Abrir no VS Code
+Para abrir a pasta diretamente no VS Code, rode:
+
+[code .]
+
+(Ou abra o VS Code manualmente e vá em File > Open Folder para selecionar a pasta do projeto).
+ 
+## Passo a passo de como atualizar o repositório depois de fazer alterações no projeto:
+Passo 1: Verificar os arquivos alterados:
+Para ver quais arquivos você modificou, criou ou deletou, rode:
+
+[git status]
+
+Passo 2: Adicionar as alterações:
+Para preparar todos os arquivos alterados para o salvamento, execute:
+
+[git add .]
+
+Passo 3: Salvar as alterações (Commit)
+Crie uma mensagem explicando o que você mudou ou adicionou:
+
+[git commit -m "Sua mensagem aqui (ex: Atualiza layout e estilos)"]
+
+Passo 4: Enviar para o GitHub (Push)
+Envie o seu código salvo para o repositório online:
+
+[git push]
+
+Dica importante para trabalho em equipe:
+Antes de começar a mexer no código é sempre bom rodar o comando abaixo para baixar as alterações que os outros integrantes do projeto possam ter feito:
+
+[git pull]
