@@ -8,7 +8,7 @@
 //===================================================
 // TESTES
 //===================================================
-console.log("NOVO MAPA.JS CARREGADO COM SUCESSO!"); // Line para testar se atualizou
+console.log("NOVO MAPA.JS CARREGADO COM SUCESSO!");
 
 // ==================================================
 // CONFIGURAÇÕES DO MAPA
@@ -47,31 +47,24 @@ mapa.fitBounds(limites);
 mapa.setMaxBounds(limites);
 
 // ==================================================
-// DADOS DA CASA
+// DADOS DAS CASAS ESPALHADAS (ID + POSIÇÃO Y, X)
 // ==================================================
-const casa = {
-    id: 1,
-    posicao: [220, 600]
-};
+const casas = [
+    { id: 1, posicao: [220, 600] },
+    { id: 2, posicao: [280, 190] },
+    { id: 3, posicao: [600, 210] },
+    { id: 4, posicao: [444, 877] },
+    { id: 5, posicao: [520v , 520] }
+];
 
 // ==================================================
 // ÍCONE DA CASA
 // ==================================================
 const iconeCasa = L.icon({
     iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
-    iconSize: [25, 41],
-    iconAnchor: [12, 41]
+    iconSize: [18, 30],
+    iconAnchor: [9, 30]
 });
-
-// ==================================================
-// CRIA MARCADOR
-// ==================================================
-const marcador = L.marker(
-    casa.posicao,
-    {
-        icon: iconeCasa
-    }
-).addTo(mapa);
 
 // ==================================================
 // PEGA A JANELA E BOTÃO
@@ -80,19 +73,24 @@ const janelaCasa = document.getElementById("janelaCasa");
 const fecharJanela = document.getElementById("fecharJanela");
 
 // ==================================================
-// CLIQUE NO MARCADOR (CORRIGIDO AQUI)
+// CRIA OS MARCADORES NO MAPA
 // ==================================================
-marcador.on("click", function () {
-    abrirJanelaCasa();
+casas.forEach(casa => {
+    const marcador = L.marker(casa.posicao, { icon: iconeCasa }).addTo(mapa);
+
+    // Ao clicar em um marcador específico, passa os dados dessa casa para a função
+    marcador.on("click", function () {
+        abrirJanelaCasa(casa);
+    });
 });
 
 // ==================================================
 // FUNÇÃO PARA ABRIR A JANELA
 // ==================================================
-function abrirJanelaCasa() {
+function abrirJanelaCasa(casa) {
     const campoId = document.getElementById("casa_id");
     if (campoId) {
-        campoId.value = casa.id;
+        campoId.value = casa.id; // Coloca o ID da casa clicada no campo da janela
     }
     
     if (janelaCasa) {
