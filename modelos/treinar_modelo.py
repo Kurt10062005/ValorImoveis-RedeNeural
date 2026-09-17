@@ -1,3 +1,10 @@
+'''
+AUTORES:
+    Felipe Kuznik Thome 
+    Kurt Cobain  Rodrigues 
+    Pedro Henrique Ghinzelli do Nascimento
+'''
+
 import pandas as pd
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.preprocessing import StandardScaler

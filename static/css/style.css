@@ -2,7 +2,7 @@
 AUTORES:
     Felipe Kuznik Thome 
     Kurt Cobain  Rodrigues 
-    Pedro Ghinzelli
+    Pedro Henrique Ghinzelli do Nascimento
 =====================================================*/
 
 /* ==================================================
@@ -60,14 +60,28 @@ body {
     flex-direction: column;
 }
 
-#enunciado1 {
-    margin-bottom: 15px;
-    text-align: center;
+#enunciado1 h1 {
+    margin: 0;
+    padding: 12px;
+    font-size: 20px;
+    background-color: #1f4e79; /* Mesma cor azul do botão */
+    color: white;
+    border-radius: 5px;       /* Bordas arredondadas iguais às do botão */
 }
 
-#enunciado1 h2 {
+#enunciado2 h1 {
     margin: 0;
-    font-size: 22px;
+    padding: 15px;
+    font-size: 20px;
+    background-color: #1f4e79; /* Mesma cor azul do botão */
+    color: white;
+    border-radius: 5px;       /* Bordas arredondadas iguais às do botão */
+}
+
+#enunciado2 h2 {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #555;
 }
 
 #mapa {
@@ -229,25 +243,27 @@ body {
     color: #333;
 }
 
-.preco-casa {
-    margin-top: 20px;
-    margin-bottom: 10px;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 7px;
-    background-color: #eeeeee;
-    text-align: center;
+.pprecoEstimado-casa {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaçamento entre o texto e o valor */
 }
 
-.preco-casa span {
+.precoEstimado-casa span {
     display: block;
     margin-bottom: 6px;
     font-size: 14px;
     color: #555;
 }
 
-.preco-casa strong {
-    display: block;
-    font-size: 25px;
-    color: #1f4e79;
+.precoEstimado-casa strong {
+    display: inline-flex;
+    gap: 4px; /* Espaçamento entre o U$ e o número */
+    font-weight: bold;
+    font-size: 150%;
+}
+
+#resultado_preco {
+    font-weight: bold;
+    font-size: 150%;
 }

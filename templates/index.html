@@ -2,7 +2,7 @@
 AUTORES:
     Felipe Kuznik Thome 
     Kurt Cobain  Rodrigues 
-    Pedro Ghinzelli
+    Pedro Henrique Ghinzelli do Nascimento
 -->
 
 <!DOCTYPE html>
@@ -26,40 +26,45 @@ AUTORES:
     <div class="interface">
         <div class="mapa">
             <header id="enunciado1">
-                <h2>
+                <h1>
                     Escolha uma casa no mapa abaixo
-                </h2>
+                </h1>
             </header>
+
+            <br>
 
             <div id="mapa"></div>
         </div>
 
         <div class="simulacao">
             <header id="enunciado2">
-                <h2>
+                <h1>
                     Simule o valor de uma casa com suas características específicas
+                </h1>
+
+                <h2>
+                    ou
                 </h2>
+
+                <div>
+                    <button type="button" onclick="gerarSimulacaoAleatoria()">Simule com dados aleatórios</button>
+                </div>
             </header>
 
             <form action="/enviar" method="post">
                 <div class="campo-form">
-                    <label for="id">ID:</label>
-                    <input type="text" id="id" name="id">
-                </div>
-
-                <div class="campo-form">
-                    <label for="data_venda">Data da última venda</label>
-                    <input type="date" id="data_venda" name="data">
+                    <label for="id">ID</label>
+                    <input type="number" id="id" name="id" min="0" step="1">
                 </div>
 
                 <div class="campo-form">
                     <label for="quartos">Quartos</label>
-                    <input type="number" id="quartos" name="quartos" min="0" max="33" step="1">
+                    <input type="number" id="quartos" name="quartos" min="0" step="1">
                 </div>
 
                 <div class="campo-form">
                     <label for="banheiros">Banheiros</label>
-                    <input type="number" id="banheiros" name="banheiros" min="0" max="8" step="0.5">
+                    <input type="number" id="banheiros" name="banheiros" min="0" step="0.25">
                 </div>
 
                 <div class="campo-form">
@@ -81,7 +86,7 @@ AUTORES:
                     <label for="waterfront">Vista para a água</label>
                     <select id="waterfront" name="waterfront" required>
                         <option value="" selected disabled hidden>
-                            Deseja alguma casa com vista ao mar ou lago
+                            Deseja algum imovel com vista ao mar ou lago
                         </option>
                         <option value="0">Não</option>
                         <option value="1">Sim</option>
@@ -110,17 +115,17 @@ AUTORES:
 
                 <div class="campo-form">
                     <label for="area_basement">Área do porão (ft²)</label>
-                    <input type="number" id="area_basement" name="area_basement" min="290" max="9410" step="1">
+                    <input type="number" id="area_basement" name="area_basement" min="0" step="1">
                 </div>
 
                 <div class="campo-form">
                     <label for="ano_construcao">Ano da construção</label>
-                    <input type="number" id="ano_construcao" name="ano_construcao" min="1900" max="2015" step="1">
+                    <input type="number" id="ano_construcao" name="ano_construcao" min="1900" max="2026" step="1">
                 </div>
 
                 <div class="campo-form">
                     <label for="ano_reforma">Ano da última reforma</label>
-                    <input type="number" id="ano_reforma" name="ano_reforma" min="0" max="2015" step="1">
+                    <input type="number" id="ano_reforma" name="ano_reforma" min="0" max="2026" step="1">
                 </div>
 
                 <div class="campo-form">
@@ -130,7 +135,7 @@ AUTORES:
 
                 <div class="campo-form">
                     <label for="lat">Latitude do imóvel</label>
-                    <input type="number" id="lat" name="lat" min="47.2" max="47.8" step="0.000001">
+                    <input type="number" id="lat" name="lat" min="47.200" max="47.800" step="0.000001">
                 </div>
 
                 <div class="campo-form">
@@ -148,12 +153,23 @@ AUTORES:
                     <input type="number" id="area_lote15" name="area_lote15" min="651" max="8710000" step="1">
                 </div>
 
-                <button type="submit">Calcular</button>
+                <div class="precoReal-casa">
+                    <label for="preco_real">Preço real do imóvel</label>
+                    <input type="text" id="preco_real" readonly>
+                </div>
+
+                <div class="botoes">
+                    <button type="submit">Calcular Preço</button>
+                </div>
             </form>
 
-            <div class="preco-casa">
-                <span>Valor calculado para a simulação</span>
-                <strong>-</strong>
+            <div class="precoEstimado-casa">
+                <span>Valor estimado do imovel</span>
+                <strong>U$ <span id="resultado_preco">-</span></strong>
+            </div>
+
+            <div class="botoes">
+                <button type="button" onclick="window.location.reload();">Restaurar Página</button>
             </div>
         </div>
     </div>
@@ -168,9 +184,6 @@ AUTORES:
             <form>
                 <label for="casa_id">ID:</label>
                 <input type="text" id="casa_id" readonly>
-
-                <label for="casa_data">Data da última venda</label>
-                <input type="date" id="casa_data" readonly>
 
                 <label for="casa_quartos">Quartos</label>
                 <input type="number" id="casa_quartos" readonly>
@@ -229,15 +242,16 @@ AUTORES:
                 <label for="casa_preco_real">Preço de venda real do imóvel</label>
                 <input type="text" id="casa_preco_real" readonly>
 
-                <div class="preco-casa">
+                <div class="precoEstimado-casa">
                     <span>Valor estimado pela IA (RNA)</span>
-                    <strong id="casa_preco_estimado">-</strong>
+                    <strong id="resultado_preco">U$-</strong>
                 </div>
             </form>
         </div>
     </div>
 
     <script src="/static/js/mapa.js?v=3"></script>
+    <script src="/static/js/simulacao.js"></script>
 </body>
 
 </html>

@@ -2,7 +2,7 @@
 //AUTORES:
 //  Felipe Kuznik Thome 
 //  Kurt Cobain  Rodrigues 
-//  Pedro Ghinzelli
+//  Pedro Henrique Ghinzelli dos Nascimento
 //===================================================
 
 //===================================================
