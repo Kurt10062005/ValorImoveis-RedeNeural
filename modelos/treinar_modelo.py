@@ -39,7 +39,7 @@ X_test = scaler.transform(X_test)
 # busca hiperparametros com Grid Search
 # !!!demora!!!
 param_grid = {
-    "hidden_layer_sizes": [(50,), (100,), (64, 32)],
+    "hidden_layer_sizes": [(100, 50, 25)],
     "activation": ["relu", "tanh"],
     "alpha": [0.0001, 0.001],
     "learning_rate": ["constant", "adaptive"]
@@ -49,7 +49,7 @@ grid_search = GridSearchCV(
     MLPRegressor(solver="adam", max_iter=1000, random_state=42),
     param_grid,
     n_jobs=-1,
-    cv=3
+    cv=5
 )
 grid_search.fit(X_train, y_train)
 
