@@ -267,3 +267,15 @@ body {
     font-weight: bold;
     font-size: 150%;
 }
+
+#resultadoOpcao_mapa {
+    background-color: rgba(161, 158, 158, 0.145);
+    border-radius: 10px;
+    width: 99%;
+}
+
+#resultadoOpcao_simulacao {
+    background-color: white;
+    border-radius: 10px;
+    width: 99%;
+}

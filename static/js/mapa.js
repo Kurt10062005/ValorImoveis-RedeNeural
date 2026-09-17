@@ -21,7 +21,7 @@ const altura = 663;
 // ==================================================
 const mapa = L.map("mapa", {
     crs: L.CRS.Simple,
-    minZoom: -1
+    minZoom: 0.1
 });
 
 // ==================================================
@@ -50,11 +50,11 @@ mapa.setMaxBounds(limites);
 // DADOS DAS CASAS ESPALHADAS (ID + POSIÇÃO Y, X)
 // ==================================================
 const casas = [
-    { id: 1, posicao: [220, 600] },
-    { id: 2, posicao: [280, 190] },
-    { id: 3, posicao: [600, 210] },
-    { id: 4, posicao: [444, 877] },
-    { id: 5, posicao: [520, 520] }
+    { marcadorId: 1, posicao: [220, 600] },
+    { marcadorId: 2, posicao: [280, 190] },
+    { marcadorId: 3, posicao: [600, 210] },
+    { marcadorId: 4, posicao: [444, 877] },
+    { marcadorId: 5, posicao: [520, 520] }
 ];
 
 // ==================================================
