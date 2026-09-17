@@ -39,7 +39,7 @@ X_test = scaler.transform(X_test)
 # busca hiperparametros com Grid Search
 # !!!demora!!!
 param_grid = {
-    "hidden_layer_sizes": [(100, 50, 25)],
+    "hidden_layer_sizes": [(128, 64, 32)],
     "activation": ["relu", "tanh"],
     "alpha": [0.0001, 0.001],
     "learning_rate": ["constant", "adaptive"]
