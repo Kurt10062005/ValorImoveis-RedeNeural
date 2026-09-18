@@ -102,7 +102,13 @@ function preencherInformacoesImovel(marcador) {
     document.getElementById("casa_area_living15").value = dadosImovel.area_living15;
     document.getElementById("casa_area_lote15").value = dadosImovel.area_lote15;
     document.getElementById("casa_preco_real").value = dadosImovel.casa_preco_real;
-    document.getElementById("resultado_preco_mapa").textContent = dadosImovel.resultado_preco_mapa;
+
+    const valorFormatado = Number(dadosImovel.resultado_preco_mapa).toLocaleString("pt-BR", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+
+    document.getElementById("resultado_preco_mapa").textContent = valorFormatado;
 }
 
 // ==================================================
