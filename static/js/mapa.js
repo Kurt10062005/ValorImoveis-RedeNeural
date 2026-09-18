@@ -21,7 +21,7 @@ const altura = 663;
 // ==================================================
 const mapa = L.map("mapa", {
     crs: L.CRS.Simple,
-    minZoom: -1
+    minZoom: -0.5
 });
 
 // ==================================================
@@ -91,7 +91,7 @@ function preencherInformacoesImovel(marcador) {
     document.getElementById("casa_andares").value = dadosImovel.andares;
     document.getElementById("casa_waterfront").value = dadosImovel.waterfront;
     document.getElementById("casa_view").value = dadosImovel.view;
-    document.getElementById("casa_observacao").value = dadosImovel.observacao;
+    document.getElementById("casa_conservacao").value = dadosImovel.conservacao;
     document.getElementById("casa_grade").value = dadosImovel.grade;
     document.getElementById("casa_area_shove").value = dadosImovel.area_shove;
     document.getElementById("casa_area_basement").value = dadosImovel.area_basement;

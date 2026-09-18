@@ -69,17 +69,17 @@ AUTORES:
 
                 <div class="campo-form">
                     <label for="area_living">Área útil (pés quadrados - ft²)</label>
-                    <input type="number" id="area_living" name="area_living" min="290" max="13540" step="1">
+                    <input type="number" id="area_living" name="area_living" min="250" step="1">
                 </div>
 
                 <div class="campo-form">
                     <label for="area_lote">Área total do terreno (pés quadrados - ft²)</label>
-                    <input type="number" id="area_lote" name="area_lote" min="520" max="1650000" step="1">
+                    <input type="number" id="area_lote" name="area_lote" min="500" step="1">
                 </div>
 
                 <div class="campo-form">
                     <label for="andares">Andares</label>
-                    <input type="number" id="andares" name="andares" min="1" max="3.5" step="0.5">
+                    <input type="number" id="andares" name="andares" min="1" max="5" step="0.5">
                 </div>
 
                 <div class="campo-form">
@@ -99,9 +99,9 @@ AUTORES:
                 </div>
 
                 <div class="campo-form">
-                    <label for="observacao">Observação</label>
-                    <input type="number" id="observacao" name="observacao" min="0" max="5" step="1">
-                </div>
+                    <label for="conservacao">Conservação</label>
+                    <input type="number" id="conservacao" name="conservacao" min="0" max="5" step="1">
+                </div> <!--ARRUMAR-->
 
                 <div class="campo-form">
                     <label for="grade">Avaliação da Prefeitura</label>
@@ -110,7 +110,7 @@ AUTORES:
 
                 <div class="campo-form">
                     <label for="area_shove">Área construída acima do solo (ft²)</label>
-                    <input type="number" id="area_shove" name="area_shove" min="290" max="9410" step="1">
+                    <input type="number" id="area_shove" name="area_shove" min="100" step="1">
                 </div>
 
                 <div class="campo-form">
@@ -126,7 +126,7 @@ AUTORES:
                 <div class="campo-form">
                     <label for="ano_reforma">Ano da última reforma</label>
                     <input type="number" id="ano_reforma" name="ano_reforma" min="0" max="2026" step="1">
-                </div>
+                </div>  
 
                 <div class="campo-form">
                     <label for="cep">CEP</label>
@@ -135,22 +135,22 @@ AUTORES:
 
                 <div class="campo-form">
                     <label for="lat">Latitude do imóvel</label>
-                    <input type="number" id="lat" name="lat" min="47.200" max="47.800" step="0.000001">
+                    <input type="number" id="lat" name="lat" step="0.000001">
                 </div>
 
                 <div class="campo-form">
                     <label for="long">Longitude do imóvel</label>
-                    <input type="number" id="long" name="long" min="-123" max="-121" step="0.000001">
+                    <input type="number" id="long" name="long" step="0.000001">
                 </div>
 
                 <div class="campo-form">
                     <label for="area_living15">Área útil dos imóveis vizinhos (ft²)</label>
-                    <input type="number" id="area_living15" name="area_living15" min="399" max="6210" step="1">
+                    <input type="number" id="area_living15" name="area_living15" min="0" step="1">
                 </div>
 
                 <div class="campo-form">
                     <label for="area_lote15">Média da área dos terrenos vizinhos (ft²)</label>
-                    <input type="number" id="area_lote15" name="area_lote15" min="651" max="8710000" step="1">
+                    <input type="number" id="area_lote15" name="area_lote15" min= "0" step="1">
                 </div>
 
                 <div class="precoReal-casa">
@@ -206,8 +206,8 @@ AUTORES:
                 <label for="casa_view">Qualidade da vista da casa</label>
                 <input type="number" id="casa_view" readonly>
 
-                <label for="casa_observacao">Observação</label>
-                <input type="number" id="casa_observacao" readonly>
+                <label for="casa_conservacao">Conservação</label>
+                <input type="number" id="casa_conservacao" readonly>
 
                 <label for="casa_grade">Avaliação da Prefeitura</label>
                 <input type="number" id="casa_grade" readonly>
@@ -252,6 +252,26 @@ AUTORES:
 
     <script src="/static/js/mapa.js?v=3"></script>
     <script src="/static/js/simulacao.js"></script>
+    <!--
+        VERIFICAR SE O ANO DE REFORMA QUE O USUARIO INSERIU NÃO É MENOR QUE O ANO DE CONSTRUÇÃO,
+        POIS NÃO TERIA SENTIDO
+    -->
+    <script>
+    const anoConstrucao = document.getElementById("ano_construcao");
+    const anoReforma = document.getElementById("ano_reforma");
+
+    anoReforma.addEventListener("input", function() {
+        if (anoConstrucao.value && anoReforma.value) {
+            if (Number(anoReforma.value) < Number(anoConstrucao.value)) {
+                anoReforma.setCustomValidity(
+                    "O ano da reforma não pode ser anterior ao ano de construção."
+                );
+            } else {
+                anoReforma.setCustomValidity("");
+            }
+        }
+    });
+</script>
 </body>
 
 </html>

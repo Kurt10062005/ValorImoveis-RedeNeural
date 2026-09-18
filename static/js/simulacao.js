@@ -28,7 +28,7 @@ async function gerarSimulacaoAleatoria() {
         document.getElementById('andares').value = casa.andares;
         document.getElementById('waterfront').value = casa.waterfront;
         document.getElementById('view').value = casa.view;
-        document.getElementById('observacao').value = casa.observacao;
+        document.getElementById('conservacao').value = casa.conservacao;
         document.getElementById('grade').value = casa.grade;
         document.getElementById('area_shove').value = casa.area_shove;
         document.getElementById('area_basement').value = casa.area_basement;
