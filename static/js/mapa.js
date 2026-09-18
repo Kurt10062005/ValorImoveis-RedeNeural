@@ -32,7 +32,7 @@ const limites = [[0, 0], [altura, largura]];
 // ==================================================
 // IMAGEM DO MAPA
 // ==================================================
-L.imageOverlay("/static/imagens/mapa.jpeg",limites).addTo(mapa);
+L.imageOverlay("/static/imagens/mapa.jpeg", limites).addTo(mapa);
 
 // ==================================================
 // AJUSTA O MAPA
@@ -46,11 +46,11 @@ mapa.setMaxBounds(limites);
 // idMarcador = identificação interna do marcador
 // dadosImovel = imóvel aleatório associado ao marcador
 const marcadores = [
-    {idMarcador: 1, posicao: [220, 600], dadosImovel: null},
-    {idMarcador: 2, posicao: [280, 190], dadosImovel: null},
-    {idMarcador: 3, posicao: [600, 210], dadosImovel: null},
-    {idMarcador: 4, posicao: [444, 877], dadosImovel: null},
-    {idMarcador: 5, posicao: [520, 520], dadosImovel: null}
+    { idMarcador: 1, posicao: [220, 600], dadosImovel: null },
+    { idMarcador: 2, posicao: [280, 190], dadosImovel: null },
+    { idMarcador: 3, posicao: [600, 210], dadosImovel: null },
+    { idMarcador: 4, posicao: [444, 877], dadosImovel: null },
+    { idMarcador: 5, posicao: [520, 520], dadosImovel: null }
 ];
 
 // ==================================================
@@ -89,8 +89,7 @@ function preencherInformacoesImovel(marcador) {
     document.getElementById("casa_area_living").value = dadosImovel.area_living;
     document.getElementById("casa_area_lote").value = dadosImovel.area_lote;
     document.getElementById("casa_andares").value = dadosImovel.andares;
-    document.getElementById("casa_waterfront").value = dadosImovel.waterfront;
-    document.getElementById("casa_view").value = dadosImovel.view;
+    document.getElementById("casa_waterfront").value = dadosImovel.waterfront == 1 ? "Sim" : "Não"; document.getElementById("casa_view").value = dadosImovel.view;
     document.getElementById("casa_conservacao").value = dadosImovel.conservacao;
     document.getElementById("casa_grade").value = dadosImovel.grade;
     document.getElementById("casa_area_shove").value = dadosImovel.area_shove;
@@ -104,7 +103,7 @@ function preencherInformacoesImovel(marcador) {
     document.getElementById("casa_area_lote15").value = dadosImovel.area_lote15;
     document.getElementById("casa_preco_real").value = dadosImovel.casa_preco_real;
     document.getElementById("resultado_preco_mapa").textContent = dadosImovel.resultado_preco_mapa;
-}  
+}
 
 // ==================================================
 // FUNÇÃO PARA BUSCAR UM IMÓVEL ALEATÓRIO
@@ -131,7 +130,7 @@ async function buscarImovelAleatorio(marcador) {
 // CRIA OS MARCADORES NO MAPA
 // ==================================================
 marcadores.forEach(marcador => {
-    const marcadorMapa = L.marker(marcador.posicao, {icon: iconeCasa}).addTo(mapa);
+    const marcadorMapa = L.marker(marcador.posicao, { icon: iconeCasa }).addTo(mapa);
 
     // ==================================================
     // CLIQUE NO MARCADOR
