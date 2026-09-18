@@ -103,6 +103,7 @@ function preencherInformacoesImovel(marcador) {
     document.getElementById("casa_area_living15").value = dadosImovel.area_living15;
     document.getElementById("casa_area_lote15").value = dadosImovel.area_lote15;
     document.getElementById("casa_preco_real").value = dadosImovel.casa_preco_real;
+    document.getElementById("resultado_preco_mapa").textContent = dadosImovel.resultado_preco_mapa;
 }  
 
 // ==================================================
@@ -110,7 +111,7 @@ function preencherInformacoesImovel(marcador) {
 // ==================================================
 async function buscarImovelAleatorio(marcador) {
     try {
-        const resposta = await fetch("/simular-aleatorio");
+        const resposta = await fetch("/simular-aleatorio-mapa");
 
         if (!resposta.ok) {
             throw new Error("Erro ao buscar imóvel aleatório.");
