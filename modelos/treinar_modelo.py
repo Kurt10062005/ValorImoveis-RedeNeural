@@ -11,6 +11,7 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPRegressor
 from sklearn.metrics import mean_absolute_error, r2_score
 import joblib
+import numpy as np
 
 # carrega os dados
 dados = pd.read_csv("../dados/kc_house_data.csv")
@@ -39,7 +40,7 @@ X_test = scaler.transform(X_test)
 # busca hiperparametros com Grid Search
 # !!!demora!!!
 param_grid = {
-    "hidden_layer_sizes": [(128, 64, 32)],
+    "hidden_layer_sizes": [(128, 64, 32, 16, 8)],
     "activation": ["relu", "tanh"],
     "alpha": [0.0001, 0.001],
     "learning_rate": ["constant", "adaptive"]
@@ -53,13 +54,17 @@ grid_search = GridSearchCV(
 )
 grid_search.fit(X_train, y_train)
 
-print("Melhores parametros encontrados:", grid_search.best_params_)
+print("Melhores Parâmetros Encontrados:", grid_search.best_params_)
 modelo = grid_search.best_estimator_
 
 # avaliar o modelo no conjunto de teste
 y_pred = modelo.predict(X_test)
-print(f"MAE (erro medio absoluto): {mean_absolute_error(y_test, y_pred):.2f}")
+print(f"MAE (Erro Médio Absoluto): {mean_absolute_error(y_test, y_pred):.2f}")
 print(f"R^2: {r2_score(y_test, y_pred):.4f}")
+
+# Calcula a porcentagem média de erro em relação ao preço real
+mape = np.mean(np.abs((y_test - y_pred) / y_test)) * 100
+print(f"Erro Percentual Médio (MAPE): {mape:.2f}%")
 
 # salvar o modelo treinado e o scaler
 joblib.dump(modelo, "modelo_precos.pkl")
