@@ -50,7 +50,14 @@ const marcadores = [
     { idMarcador: 2, posicao: [280, 190], dadosImovel: null },
     { idMarcador: 3, posicao: [600, 210], dadosImovel: null },
     { idMarcador: 4, posicao: [444, 877], dadosImovel: null },
-    { idMarcador: 5, posicao: [520, 520], dadosImovel: null }
+    { idMarcador: 5, posicao: [520, 520], dadosImovel: null },
+    { idMarcador: 6, posicao: [100, 210], dadosImovel: null },
+    { idMarcador: 7, posicao: [390, 522], dadosImovel: null },
+    { idMarcador: 8, posicao: [470, 80], dadosImovel: null },
+    { idMarcador: 9, posicao: [303, 50], dadosImovel: null },
+    { idMarcador: 10, posicao: [570, 1033], dadosImovel: null },
+    { idMarcador: 11, posicao: [400, 400], dadosImovel: null },
+    { idMarcador: 12, posicao: [350, 770], dadosImovel: null },
 ];
 
 // ==================================================
