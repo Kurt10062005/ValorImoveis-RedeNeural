@@ -1,0 +1,430 @@
+<!--
+AUTORES:
+    Felipe Kuznik Thome 
+    Kurt Cobain Rodrigues 
+    Pedro Henrique Ghinzelli do Nascimento
+-->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Valor de Imóveis</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+
+<body>
+    <header id="header1">
+        <h1 id="titulo1">
+            AVALIAÇÃO DE IMÓVEIS
+        </h1>
+    </header>
+
+    <div class="interface">
+        <div class="mapa">
+            <header id="enunciado1">
+                <h1>
+                    Escolha uma casa no mapa abaixo
+                </h1>
+            </header>
+
+            <br>
+
+            <div id="mapa"></div>
+        </div>
+
+        <div class="simulacao">
+            <header id="enunciado2">
+                <h1>
+                    Simule o valor de uma casa com suas características específicas
+                </h1>
+
+                <h2>
+                    ou
+                </h2>
+
+                <div>
+                    <button type="button" onclick="gerarSimulacaoAleatoria()">Simule com dados aleatórios</button>
+                </div>
+            </header>
+
+            <!--
+                INTERFACE DO LADO DIREITO, ONDE O UWUQRIO PREENCHE OW DADOS OU USA DADOS ALEATORIOS
+            -->
+            <form action="/enviar" method="post">
+                <div class="campo-form">
+                    <label for="id">ID</label>
+                    <input type="number" id="id" name="id" min="0" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="quartos">
+                        <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe o número de quartos que deseja, podendo escolher quantos quiser!
+                            </span>
+                        </span>
+                        Quartos 
+                    </label>
+                    <input type="number" id="quartos" name="quartos" min="0" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="banheiros">
+                        <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe o número de banheiros que deseja, podendo escolher quantos quiser!
+                            </span>
+                        </span>
+                        Banheiros
+                    </label>
+                    <input type="number" id="banheiros" name="banheiros" min="0" step="0.25">
+                </div>
+
+                <div class="campo-form">
+                    <label for="area_living">
+                        <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informw o tamanho interno do imóvel, sem garagem ou  quintal (min = 250 ft²)
+                            </span>
+                        </span>
+                        Área útil (pés quadrados - ft²)
+                    </label>
+                    <input type="number" id="area_living" name="area_living" min="250" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="area_lote">
+                        <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe o tamanho total do terreno (min = 500 ft²)
+                            </span>
+                        </span>
+                        Área total do terreno (pés quadrados - ft²)
+                    </label>
+                    <input type="number" id="area_lote" name="area_lote" min="500" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="andares">
+                        <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe a quantidade de andares (min = 1 e max = 5)
+                            </span>
+                        </span>
+                        Andares
+                    </label>
+                    <input type="number" id="andares" name="andares" min="1" max="5" step="0.5">
+                </div>
+
+                <div class="campo-form">
+                    <label for="waterfront">
+                        <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe se o imóvel deve ter vista para lagos / rios / mar
+                            </span>
+                        </span>
+                        Vista para a água
+                    </label>
+                    <select id="waterfront" name="waterfront" required>
+                        <option value="" selected disabled hidden>
+                            Deseja algum imovel com vista ao mar ou lago
+                        </option>
+                        <option value="0">Não</option>
+                        <option value="1">Sim</option>
+                    </select>
+                </div>
+
+                <div class="campo-form">
+                    <label for="view">
+                        <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe a qualidade da vista do imóvel. Nota de 0 a 4
+                            </span>
+                        </span>
+                        Qualidade da vista da casa
+                    </label>
+                    <input type="number" id="view" name="view" min="0" max="4" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="conservacao">
+                        <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe o estado de conservação do imóvel. Avaliação de 0 a 5
+                            </span>
+                        </span>
+                        Conservação
+                    </label>
+                    <input type="number" id="conservacao" name="conservacao" min="0" max="5" step="1">
+                </div> 
+
+                <div class="campo-form">
+                    <label for="grade">
+                        <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe a nota da avaliação da Prefeitura. Avaliação de 1 a 13
+                            </span>
+                        </span>
+                        Avaliação da Prefeitura
+                    </label>
+                    <input type="number" id="grade" name="grade" min="1" max="13" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="area_shove">
+                        <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe o tamanho da construção acima do solo sem considerar o tamanho do porão (min = 100 ft²)
+                            </span>
+                        </span>
+                        Área construída acima do solo (ft²)
+                    </label>
+                    <input type="number" id="area_shove" name="area_shove" min="100" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="area_basement">
+                        <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe o tamanho da construção abaixo do solo (Porão) sem considerar o tamanho da construção acima do solo (min = 0)
+                            </span>
+                        </span>
+                        Área do porão (ft²)
+                    </label>
+                    <input type="number" id="area_basement" name="area_basement" min="0" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="ano_construcao">
+                        <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe o ano da construção do imóvel (min = 1900 e max = 2026)
+                            </span>
+                        </span>
+                        Ano da construção
+                    </label>
+                    <input type="number" id="ano_construcao" name="ano_construcao" min="1900" max="2026" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="ano_reforma">
+                        <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe caso houver o ano da reforma do imóvel (min = 0 (não houve reformas no imóvel) e max = 2026)
+                            </span>
+                        </span>
+                        Ano da última reforma
+                    </label>
+                    <input type="number" id="ano_reforma" name="ano_reforma" min="0" max="2026" step="1">
+                </div>  
+
+                <div class="campo-form">
+                    <label for="cep">
+                        <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe o CEP do imóvel (min = 98000 e max = 98200)
+                            </span>
+                        </span>
+                        CEP
+                    </label>
+                    <input type="number" id="cep" name="cep" min="98000" max="98200" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="lat">
+                         <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe a latitude do imóvel
+                            </span>
+                        </span>
+                        Latitude do imóvel
+                    </label>
+                    <input type="number" id="lat" name="lat" step="0.000001">
+                </div>
+
+                <div class="campo-form">
+                    <label for="long">
+                         <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe a longitude do imóvel
+                            </span>
+                        </span>
+                        Longitude do imóvel
+                    </label>
+                    <input type="number" id="long" name="long" step="0.000001">
+                </div>
+
+                <div class="campo-form">
+                    <label for="area_living15">
+                         <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe a média do área interna das 15 casas mais próximas (min = 0)
+                            </span>
+                        </span>
+                        Média da área útil dos imóveis vizinhos (ft²)
+                    </label>
+                    <input type="number" id="area_living15" name="area_living15" min="0" step="1">
+                </div>
+
+                <div class="campo-form">
+                    <label for="area_lote15">
+                        <span class="infoCampo">
+                            ❔
+                            <span class="caixaTexto">
+                                Informe a média do área do terreno das 15 casas mais próximas (min = 0)
+                            </span>
+                        </span>
+                        Média da área dos terrenos vizinhos (ft²)
+                    </label>
+                    <input type="number" id="area_lote15" name="area_lote15" min= "0" step="1">
+                </div>
+
+                <div class="precoReal-casa">
+                    <label for="preco_real">Preço real do imóvel</label>
+                    <input type="text" id="preco_real" readonly>
+                </div>
+
+                <div class="botoes">
+                    <button type="submit">Calcular Preço</button>
+                </div>
+            </form>
+
+            <label for="previsaoRNA">Preço estimado do imóvel</label>
+            <div class="precoEstimado-casa">
+                <strong id="resultadoOpcao_simulacao">U$ <span id="resultado_preco">-</span></strong>
+            </div>
+
+            <div class="botoes">
+                <button type="button" onclick="window.location.reload();">Restaurar Página</button>
+            </div>
+        </div>
+    </div>
+
+    <!--
+        JANELA MENOR (POR-UP) COM AS INFORMAÇÕES DAS CASAS (MARCADORES)
+    -->
+    <div id="janelaCasa">
+        <div class="janela-casa-header">
+            <h2>Informações do imóvel</h2>
+            <button type="button" id="fecharJanela">X</button>
+        </div>
+
+        <div class="janela-casa-conteudo">
+            <form>
+                <label for="casa_id">ID:</label>
+                <input type="text" id="casa_id" readonly>
+
+                <label for="casa_quartos">Quartos</label>
+                <input type="number" id="casa_quartos" readonly>
+
+                <label for="casa_banheiros">Banheiros</label>
+                <input type="number" id="casa_banheiros" readonly>
+
+                <label for="casa_area_living">Área útil (pés quadrados - ft²)</label>
+                <input type="number" id="casa_area_living" readonly>
+
+                <label for="casa_area_lote">Área total do terreno (pés quadrados - ft²)</label>
+                <input type="number" id="casa_area_lote" readonly>
+
+                <label for="casa_andares">Andares</label>
+                <input type="number" id="casa_andares" readonly>
+
+                <label for="casa_waterfront">Vista para a água</label>
+                <input type="text" id="casa_waterfront" readonly>
+
+                <label for="casa_view">Qualidade da vista da casa</label>
+                <input type="number" id="casa_view" readonly>
+
+                <label for="casa_conservacao">Conservação</label>
+                <input type="number" id="casa_conservacao" readonly>
+
+                <label for="casa_grade">Avaliação da Prefeitura</label>
+                <input type="number" id="casa_grade" readonly>
+
+                <label for="casa_area_shove">Área construída acima do solo (pés quadrados - ft²)</label>
+                <input type="number" id="casa_area_shove" readonly>
+
+                <label for="casa_area_basement">Área do porão (pés quadrados - ft²)</label>
+                <input type="number" id="casa_area_basement" readonly>
+
+                <label for="casa_ano_construcao">Ano da construção</label>
+                <input type="number" id="casa_ano_construcao" readonly>
+
+                <label for="casa_ano_reforma">Ano da última reforma</label>
+                <input type="number" id="casa_ano_reforma" readonly>
+
+                <label for="casa_cep">CEP</label>
+                <input type="number" id="casa_cep" readonly>
+
+                <label for="casa_lat">Latitude do imóvel</label>
+                <input type="number" id="casa_lat" readonly>
+
+                <label for="casa_long">Longitude do imóvel</label>
+                <input type="number" id="casa_long" readonly>
+
+                <label for="casa_area_living15">Área útil dos imóveis vizinhos (pés quadrados - ft²)</label>
+                <input type="number" id="casa_area_living15" readonly>
+
+                <label for="casa_area_lote15">Média da área dos terrenos vizinhos (pés quadrados - ft²)</label>
+                <input type="number" id="casa_area_lote15" readonly>
+
+                <label for="casa_preco_real">Preço de venda real do imóvel</label>
+                <input type="text" id="casa_preco_real" readonly>
+
+                <label for="resultado_preco_mapa">Preço estimado do imóvel</label>
+                <div class="precoEstimado-casa">
+                    <strong id="resultadoOpcao_mapa">U$ <span id="resultado_preco_mapa">-</span></strong>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--
+        SCRIPT DO CODIGO DA CONFIGURAÇÃO DO MAPA E IMPRESSÃO DOS VALORES E RESULTADOS NA INTERFACE DO LADO ESQUERDO
+        E SCRIPT DA IMPRESSÃO DOS VALORES E RESULTADO NA INTERFACE DO LADO DIREIRO
+    -->
+    <script src="/static/js/mapa.js?v=3"></script>
+    <script src="/static/js/simulacao.js"></script>
+    <!--
+        VERIFICAR SE O ANO DE REFORMA QUE O USUARIO INSERIU NÃO É MENOR QUE O ANO DE CONSTRUÇÃO,
+        POIS NÃO TERIA SENTIDO
+    -->
+    <script>
+    const anoConstrucao = document.getElementById("ano_construcao");
+    const anoReforma = document.getElementById("ano_reforma");
+
+    anoReforma.addEventListener("input", function() {
+        if (anoConstrucao.value && anoReforma.value) {
+            if (Number(anoReforma.value) < Number(anoConstrucao.value)) {
+                anoReforma.setCustomValidity(
+                    "O ano da reforma não pode ser anterior ao ano de construção."
+                );
+            } else {
+                anoReforma.setCustomValidity("");
+            }
+        }
+    });
+</script>
+</body>
+</html>

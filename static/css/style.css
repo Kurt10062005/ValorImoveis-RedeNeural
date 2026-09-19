@@ -1,0 +1,329 @@
+/*===================================================
+AUTORES:
+    Felipe Kuznik Thome 
+    Kurt Cobain  Rodrigues 
+    Pedro Henrique Ghinzelli do Nascimento
+=====================================================*/
+
+/* ==================================================
+   CONFIGURAÇÕES GERAIS
+================================================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    overflow: hidden; /* Trava a rolagem da página inteira */
+}
+
+/* ==================================================
+   CABEÇALHO PRINCIPAL
+================================================== */
+#header1 {
+    width: 100%;
+    height: 76px;
+    padding: 20px;
+    background-color: #1f4e79;
+    text-align: center;
+}
+
+#titulo1 {
+    margin: 0;
+    color: white;
+    font-size: 32px;
+    line-height: 36px;
+}
+
+/* ==================================================
+   INTERFACE PRINCIPAL (MUDANÇA CHAVE AQUI)
+================================================== */
+.interface {
+    display: flex;
+    width: 100%;
+    height: calc(100vh - 76px); 
+    overflow: hidden;
+}
+
+/* ==================================================
+   ÁREA DO MAPA (LADO ESQUERDO)
+================================================== */
+.mapa {
+    width: 60%;
+    height: 100%;
+    padding: 20px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+#enunciado1 h1 {
+    margin: 0;
+    padding: 12px;
+    font-size: 20px;
+    background-color: #1f4e79; /* Mesma cor azul do botão */
+    color: white;
+    border-radius: 5px;       /* Bordas arredondadas iguais às do botão */
+}
+
+#enunciado2 h1 {
+    margin: 0;
+    padding: 15px;
+    font-size: 20px;
+    background-color: #1f4e79; /* Mesma cor azul do botão */
+    color: white;
+    border-radius: 5px;       /* Bordas arredondadas iguais às do botão */
+}
+
+#enunciado2 h2 {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+#mapa {
+    width: 100%;
+    flex: 1; 
+    border: 2px solid black;
+}
+
+/* ==================================================
+   ÁREA DE SIMULAÇÃO (LADO DIREITO - COM SCROLL PRÓPRIO)
+================================================== */
+.simulacao {
+    width: 40%;
+    height: 100%;
+    padding: 20px;
+    background-color: #eeeeee;
+    overflow-y: auto; 
+}
+
+#enunciado2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#enunciado2 h2 {
+    margin: 0;
+    font-size: 22px;
+}
+
+/* ==================================================
+   FORMULÁRIO DA SIMULAÇÃO
+================================================== */
+.simulacao form {
+    width: 100%;
+}
+
+.campo-form {
+    margin-bottom: 15px;
+}
+
+.simulacao label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.simulacao input,
+.simulacao select {
+    width: 100%;
+    padding: 9px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    font-size: 15px;
+    background-color: white;
+}
+
+.simulacao button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #1f4e79;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.simulacao button:hover {
+    background-color: #163a5c;
+}
+
+/* ==================================================
+   JANELA FLUTUANTE DO IMÓVEL (MODAL POR CIMA DE TUDO)
+================================================== */
+#janelaCasa {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 600px;
+    max-width: 90vw;
+    max-height: 85vh;
+    background-color: white;
+    border: 1px solid #999;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    z-index: 999999; 
+    overflow: hidden;
+}
+
+.janela-casa-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 60px;
+    padding: 0 15px 0 20px;
+    background-color: #1f4e79;
+    color: white;
+}
+
+.janela-casa-header h2 {
+    margin: 0;
+    font-size: 20px;
+}
+
+#fecharJanela {
+    width: 35px;
+    height: 35px;
+    padding: 0;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    font-size: 28px;
+    line-height: 30px;
+    cursor: pointer;
+}
+
+#fecharJanela:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.janela-casa-conteudo {
+    width: 100%;
+    height: calc(100% - 60px);
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.janela-casa-conteudo form {
+    width: 100%;
+}
+
+.janela-casa-conteudo label {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.janela-casa-conteudo label:first-child {
+    margin-top: 0;
+}
+
+.janela-casa-conteudo input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #eeeeee;
+    color: #333;
+}
+
+.pprecoEstimado-casa {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaçamento entre o texto e o valor */
+}
+
+.precoEstimado-casa span {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #555;
+}
+
+.precoEstimado-casa strong {
+    display: inline-flex;
+    gap: 4px; /* Espaçamento entre o U$ e o número */
+    font-weight: bold;
+    font-size: 150%;
+}
+
+#resultado_preco {
+    font-weight: bold;
+    font-size: 150%;
+}
+
+#resultadoOpcao_mapa {
+    background-color: rgba(161, 158, 158, 0.145);
+    border-radius: 10px;
+    width: 100%;
+}
+
+#resultado_preco_mapa {
+    font-size: 100%;
+}
+
+#resultadoOpcao_simulacao {
+    background-color: white;
+    border-radius: 10px;
+    width: 99%;
+}
+
+/* ==================================================
+   INFORMAÇÕES DOS CAMPOS
+================================================== */
+.infoCampo {
+  position: relative; /* ADICIONA ESSA LINHA no seu */
+  background-color: #163a5c;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  cursor: help;
+}
+
+.infoCampo .caixaTexto {
+  visibility: hidden;
+  width: 300px;
+  background-color: #163a5c;
+  color: white;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 25px;
+  line-height: 1.4;
+  text-align: left;
+  white-space: normal; /* pra não cortar o texto */
+
+  position: absolute;
+  z-index: 9999; /* pra ficar por cima de tudo */
+  left: 30px; /* abre pro lado direito da bolinha */
+  top: 50%;
+  transform: translateY(-50%);
+  
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.infoCampo:hover .caixaTexto {
+  visibility: visible;
+  opacity: 1;
+}

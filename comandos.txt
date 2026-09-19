@@ -1,0 +1,20 @@
+Rodar Treinamento: em /modelos
+
+python treinar_modelo.py
+
+ou
+
+$inicio = Get-Date
+python treinar_modelo.py
+$fim = Get-Date
+$fim - $inicio
+
+
+
+
+
+Rodar site:
+
+python -m uvicorn main:app --reload
+
+Então abrir em: http://127.0.0.1:8000
