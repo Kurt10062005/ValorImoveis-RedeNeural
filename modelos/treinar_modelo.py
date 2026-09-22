@@ -20,7 +20,7 @@ dados = pd.read_csv("../dados/kc_house_data.csv")
 colunas_entrada = [
     "bedrooms", "bathrooms", "sqft_living", "sqft_lot", "floors",
     "waterfront", "view", "condition", "grade", "sqft_above",
-    "sqft_basement", "yr_built", "yr_renovated", "zipcode",
+    "sqft_basement", "yr_built", "yr_renovated",
     "lat", "long", "sqft_living15", "sqft_lot15"
 ]
 
@@ -75,9 +75,53 @@ y_pred = scaler_y.inverse_transform(y_pred_norm.reshape(-1, 1)).ravel()
 print(f"[Teste] Erro medio da previsao (MAE): R$ {mean_absolute_error(y_test, y_pred):,.2f}")
 print(f"[Teste] Qualidade do ajuste do modelo (R^2): {r2_score(y_test, y_pred):.2%}")
 
-# Calcula a media de erro em relacao ao preco de verdade
-mape = np.mean(np.abs((y_test - y_pred) / y_test)) * 100
-print(f"[Teste] Erro precentual medio (MAPE): {mape:.2f}%")
+from sklearn.metrics import mean_squared_error
+
+# erros individuais
+erros_percentuais = np.abs(
+    (y_test.values - y_pred) / y_test.values
+) * 100
+
+# métricas
+mae = mean_absolute_error(y_test, y_pred)
+rmse = np.sqrt(mean_squared_error(y_test, y_pred))
+mape = np.mean(erros_percentuais)
+mediana = np.median(erros_percentuais)
+p90 = np.percentile(erros_percentuais, 90)
+p95 = np.percentile(erros_percentuais, 95)
+pior = np.max(erros_percentuais)
+
+print(f"MAE: R$ {mae:,.2f}")
+print(f"RMSE: R$ {rmse:,.2f}")
+print(f"MAPE: {mape:.2f}%")
+print(f"Mediana do erro: {mediana:.2f}%")
+print(f"90% dos erros: abaixo de {p90:.2f}%")
+print(f"95% dos erros: abaixo de {p95:.2f}%")
+print(f"Pior erro: {pior:.2f}%")
+
+resultado = pd.DataFrame({
+    "real": y_test.values,
+    "previsto": y_pred
+})
+
+resultado["erro"] = resultado["previsto"] - resultado["real"]
+
+resultado["erro_percentual"] = (
+    np.abs(resultado["erro"] / resultado["real"]) * 100
+)
+
+print(
+    resultado
+    .sort_values("erro_percentual", ascending=False)
+    .head(20)
+)
+
+piores = resultado.sort_values(
+    "erro_percentual",
+    ascending=False
+).head(10)
+
+print(dados.loc[piores.index])
 
 # salvar o modelo treinado e o scaler
 joblib.dump(modelo, "modelo_precos.pkl")
