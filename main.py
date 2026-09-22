@@ -49,7 +49,7 @@ def simular_aleatorio():
         "andares": float(casa_amostra["floors"]),
         "waterfront": int(casa_amostra["waterfront"]),
         "view": int(casa_amostra["view"]),
-        "conservacao": int(casa_amostra["condition"]),
+        "condicao": int(casa_amostra["condition"]),
         "grade": int(casa_amostra["grade"]),
         "area_shove": float(casa_amostra["sqft_above"]),
         "area_basement": float(casa_amostra["sqft_basement"]),
@@ -74,7 +74,7 @@ def prever_preco(
     andares: float = Form(...),
     waterfront: int = Form(...),
     view: int = Form(...),
-    conservacao: int = Form(...),
+    condicao: int = Form(...),
     grade: int = Form(...),
     area_shove: float = Form(...),
     area_basement: float = Form(...),
@@ -95,7 +95,7 @@ def prever_preco(
         "floors": andares,
         "waterfront": waterfront,
         "view": view,
-        "condition": conservacao,
+        "condition": condicao,
         "grade": grade,
         "sqft_above": area_shove,
         "sqft_basement": area_basement,
@@ -138,7 +138,7 @@ def simular_aleatorio_mapa():
         "andares": float(casa_amostra["floors"]),
         "waterfront": int(casa_amostra["waterfront"]),
         "view": int(casa_amostra["view"]),
-        "conservacao": int(casa_amostra["condition"]),
+        "condicao": int(casa_amostra["condition"]),
         "grade": int(casa_amostra["grade"]),
         "area_shove": float(casa_amostra["sqft_above"]),
         "area_basement": float(casa_amostra["sqft_basement"]),
@@ -149,7 +149,6 @@ def simular_aleatorio_mapa():
         "long": float(casa_amostra["long"]),
         "area_living15": float(casa_amostra["sqft_living15"]),
         "area_lote15": float(casa_amostra["sqft_lot15"]),
-
         # Preco REAL do CSV
         "casa_preco_real": float(casa_amostra["price"])
     }
@@ -163,7 +162,7 @@ def simular_aleatorio_mapa():
         "floors": dados_imovel["andares"],
         "waterfront": dados_imovel["waterfront"],
         "view": dados_imovel["view"],
-        "condition": dados_imovel["conservacao"],
+        "condition": dados_imovel["condicao"],
         "grade": dados_imovel["grade"],
         "sqft_above": dados_imovel["area_shove"],
         "sqft_basement": dados_imovel["area_basement"],

@@ -44,6 +44,7 @@ mapa.setMaxBounds(limites);
 // DADOS DOS MARCADORES
 // ==================================================
 // idMarcador = identificação interna do marcador
+
 // dadosImovel = imóvel aleatório associado ao marcador
 const marcadores = [
     { idMarcador: 1, posicao: [220, 600], dadosImovel: null },
@@ -97,7 +98,15 @@ function preencherInformacoesImovel(marcador) {
     document.getElementById("casa_area_lote").value = dadosImovel.area_lote;
     document.getElementById("casa_andares").value = dadosImovel.andares;
     document.getElementById("casa_waterfront").value = dadosImovel.waterfront == 1 ? "Sim" : "Não"; document.getElementById("casa_view").value = dadosImovel.view;
-    document.getElementById("casa_conservacao").value = dadosImovel.conservacao;
+    const condicoes = {
+        0: "C1 ➡️ Imóvel novo ou como novo",
+        1: "C2 ➡️ Desgaste minimo de uso",
+        2: "C3 ➡️ Desgaste normal do tempo",
+        3: "C4 ➡️ Imóvel habitavel e funcionel",
+        4: "C5 ➡️ Precisa de grandes reparos urgente",
+        5: "C6 ➡️ Danos severos ou total falta de condições de moradia"
+    };
+    document.getElementById("casa_condicao").value = condicoes[dadosImovel.condicao];
     document.getElementById("casa_grade").value = dadosImovel.grade;
     document.getElementById("casa_area_shove").value = dadosImovel.area_shove;
     document.getElementById("casa_area_basement").value = dadosImovel.area_basement;

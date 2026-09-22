@@ -68,7 +68,7 @@ AUTORES:
                                 Informe o número de quartos que deseja, podendo escolher quantos quiser!
                             </span>
                         </span>
-                        Quartos 
+                        Quartos
                     </label>
                     <input type="number" id="quartos" name="quartos" min="0" step="1">
                 </div>
@@ -91,7 +91,7 @@ AUTORES:
                         <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
-                                Informw o tamanho interno do imóvel, sem garagem ou  quintal (min = 250 ft²)
+                                Informw o tamanho interno do imóvel, sem garagem ou quintal (min = 250 ft²)
                             </span>
                         </span>
                         Área útil (pés quadrados - ft²)
@@ -158,17 +158,27 @@ AUTORES:
                 </div>
 
                 <div class="campo-form">
-                    <label for="conservacao">
+                    <label for="condicao">
                         <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
-                                Informe o estado de conservação do imóvel. Avaliação de 0 a 5
+                                Informe a condição do imóvel
                             </span>
                         </span>
-                        Conservação
+                        Avaliação de condição
                     </label>
-                    <input type="number" id="conservacao" name="conservacao" min="0" max="5" step="1">
-                </div> 
+                    <select id="condicao" name="condicao" required>
+                        <option value="" selected disabled hidden>
+                            Qual o nivel de avaliação da condição do imóvel
+                        </option>
+                        <option value="0">C1 ➡️ Imóvel novo ou como novo</option>
+                        <option value="1">C2 ➡️ Desgaste minimo de uso</option>
+                        <option value="2">C3 ➡️ Desgaste normal do tempo</option>
+                        <option value="3">C4 ➡️ Imóvel habitavel e funcionel</option>
+                        <option value="4">C5 ➡️ Precisa de grandes reparos urgente</option>
+                        <option value="5">C6 ➡️ Danos severos ou total falta de condições de moradia</option>
+                    </select>
+                </div>
 
                 <div class="campo-form">
                     <label for="grade">
@@ -176,6 +186,17 @@ AUTORES:
                             ❔
                             <span class="caixaTexto">
                                 Informe a nota da avaliação da Prefeitura. Avaliação de 1 a 13
+                                Avaliação 1 a 3: Abaixo do padrão
+                                Avaliação 4: Construção de baixa qualidade
+                                Avaliação 5: Econômica / Simples
+                                Avaliação 6: Padrão minimo
+                                Avaliação 7: Média / padrão
+                                Avaliação 8: Acima da média
+                                Avaliação 9: Desing Arquitetonico Superior
+                                Avaliação 10: Alta Qualidade
+                                Avaliação 11: Luxo Customizado
+                                Avaliação 12: Alto padrão
+                                Avaliação 13: Mansão
                             </span>
                         </span>
                         Avaliação da Prefeitura
@@ -188,7 +209,8 @@ AUTORES:
                         <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
-                                Informe o tamanho da construção acima do solo sem considerar o tamanho do porão (min = 100 ft²)
+                                Informe o tamanho da construção acima do solo sem considerar o tamanho do porão (min =
+                                100 ft²)
                             </span>
                         </span>
                         Área construída acima do solo (ft²)
@@ -201,7 +223,8 @@ AUTORES:
                         <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
-                                Informe o tamanho da construção abaixo do solo (Porão) sem considerar o tamanho da construção acima do solo (min = 0)
+                                Informe o tamanho da construção abaixo do solo (Porão) sem considerar o tamanho da
+                                construção acima do solo (min = 0)
                             </span>
                         </span>
                         Área do porão (ft²)
@@ -227,13 +250,14 @@ AUTORES:
                         <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
-                                Informe caso houver o ano da reforma do imóvel (min = 0 (não houve reformas no imóvel) e max = 2026)
+                                Informe caso houver o ano da reforma do imóvel (min = 0 (não houve reformas no imóvel) e
+                                max = 2026)
                             </span>
                         </span>
                         Ano da última reforma
                     </label>
                     <input type="number" id="ano_reforma" name="ano_reforma" min="0" max="2026" step="1">
-                </div>  
+                </div>
 
                 <div class="campo-form">
                     <label for="cep">
@@ -250,7 +274,7 @@ AUTORES:
 
                 <div class="campo-form">
                     <label for="lat">
-                         <span class="infoCampo">
+                        <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
                                 Informe a latitude do imóvel
@@ -263,7 +287,7 @@ AUTORES:
 
                 <div class="campo-form">
                     <label for="long">
-                         <span class="infoCampo">
+                        <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
                                 Informe a longitude do imóvel
@@ -276,7 +300,7 @@ AUTORES:
 
                 <div class="campo-form">
                     <label for="area_living15">
-                         <span class="infoCampo">
+                        <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
                                 Informe a média do área interna das 15 casas mais próximas (min = 0)
@@ -297,7 +321,7 @@ AUTORES:
                         </span>
                         Média da área dos terrenos vizinhos (ft²)
                     </label>
-                    <input type="number" id="area_lote15" name="area_lote15" min= "0" step="1">
+                    <input type="number" id="area_lote15" name="area_lote15" min="0" step="1">
                 </div>
 
                 <div class="precoReal-casa">
@@ -356,8 +380,8 @@ AUTORES:
                 <label for="casa_view">Qualidade da vista da casa</label>
                 <input type="number" id="casa_view" readonly>
 
-                <label for="casa_conservacao">Conservação</label>
-                <input type="number" id="casa_conservacao" readonly>
+                <label for="casa_condicao">Condição</label>
+                <input type="text" id="casa_condicao" readonly>
 
                 <label for="casa_grade">Avaliação da Prefeitura</label>
                 <input type="number" id="casa_grade" readonly>
@@ -411,20 +435,21 @@ AUTORES:
         POIS NÃO TERIA SENTIDO
     -->
     <script>
-    const anoConstrucao = document.getElementById("ano_construcao");
-    const anoReforma = document.getElementById("ano_reforma");
+        const anoConstrucao = document.getElementById("ano_construcao");
+        const anoReforma = document.getElementById("ano_reforma");
 
-    anoReforma.addEventListener("input", function() {
-        if (anoConstrucao.value && anoReforma.value) {
-            if (Number(anoReforma.value) < Number(anoConstrucao.value)) {
-                anoReforma.setCustomValidity(
-                    "O ano da reforma não pode ser anterior ao ano de construção."
-                );
-            } else {
-                anoReforma.setCustomValidity("");
+        anoReforma.addEventListener("input", function () {
+            if (anoConstrucao.value && anoReforma.value) {
+                if (Number(anoReforma.value) < Number(anoConstrucao.value)) {
+                    anoReforma.setCustomValidity(
+                        "O ano da reforma não pode ser anterior ao ano de construção."
+                    );
+                } else {
+                    anoReforma.setCustomValidity("");
+                }
             }
-        }
-    });
-</script>
+        });
+    </script>
 </body>
+
 </html>
