@@ -24,7 +24,7 @@ scaler_y = joblib.load("modelos/scaler_y.pkl")
 colunas_entrada = joblib.load("modelos/colunas_entrada.pkl")
 
 # Carrega a base de dados das casas para simulação
-df_casas = pd.read_csv("dados/kc_house_data.csv")
+df_casas = pd.read_csv("dados/kc_house_data2_mediano_modificado.csv")
 
 @app.get("/")
 def home(request: Request):
