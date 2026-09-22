@@ -14,7 +14,7 @@ import joblib
 import numpy as np
 
 # carrega os dados
-dados = pd.read_csv("../dados/kc_house_data.csv")
+dados = pd.read_csv("../dados/kc_house_data3_muito_modificado.csv")
 
 # colunas de entrada
 colunas_entrada = [
@@ -46,7 +46,7 @@ y_train_norm = scaler_y.fit_transform(y_train.values.reshape(-1, 1)).ravel()
 
 # busca hiperparametros com Grid Search (!!!aprte q mais demora!!!)
 param_grid = {
-    "hidden_layer_sizes": [(64, 36)],
+    "hidden_layer_sizes": [(34, 17)],
     "activation": ["relu", "tanh"],
     "alpha": [0.0001, 0.001],
     "learning_rate": ["constant", "adaptive"]
@@ -100,9 +100,11 @@ print(f"95% dos erros: abaixo de {p95:.2f}%")
 print(f"Pior erro: {pior:.2f}%")
 
 resultado = pd.DataFrame({
-    "real": y_test.values,
-    "previsto": y_pred
-})
+    'real': y_test,
+    'previsto': y_pred,
+    'erro': abs(y_test - y_pred),
+    'erro_percentual': (abs(y_test - y_pred) / y_test) * 100
+}, index=y_test.index) 
 
 resultado["erro"] = resultado["previsto"] - resultado["real"]
 
