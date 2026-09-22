@@ -260,19 +260,6 @@ AUTORES:
                 </div>
 
                 <div class="campo-form">
-                    <label for="cep">
-                        <span class="infoCampo">
-                            ❔
-                            <span class="caixaTexto">
-                                Informe o CEP do imóvel (min = 98000 e max = 98200)
-                            </span>
-                        </span>
-                        CEP
-                    </label>
-                    <input type="number" id="cep" name="cep" min="98000" max="98200" step="1">
-                </div>
-
-                <div class="campo-form">
                     <label for="lat">
                         <span class="infoCampo">
                             ❔
@@ -336,7 +323,10 @@ AUTORES:
 
             <label for="previsaoRNA">Preço estimado do imóvel</label>
             <div class="precoEstimado-casa">
-                <strong id="resultadoOpcao_simulacao">U$ <span id="resultado_preco">-</span></strong>
+                <strong id="resultadoOpcao_simulacao">
+                    U$ 
+                    <span id="resultado_preco"></span>
+                </strong>
             </div>
 
             <div class="botoes">
@@ -397,9 +387,6 @@ AUTORES:
 
                 <label for="casa_ano_reforma">Ano da última reforma</label>
                 <input type="number" id="casa_ano_reforma" readonly>
-
-                <label for="casa_cep">CEP</label>
-                <input type="number" id="casa_cep" readonly>
 
                 <label for="casa_lat">Latitude do imóvel</label>
                 <input type="number" id="casa_lat" readonly>

@@ -34,7 +34,6 @@ async function gerarSimulacaoAleatoria() {
         document.getElementById('area_basement').value = casa.area_basement;
         document.getElementById('ano_construcao').value = casa.ano_construcao;
         document.getElementById('ano_reforma').value = casa.ano_reforma;
-        document.getElementById('cep').value = casa.cep;
         document.getElementById('lat').value = casa.lat;
         document.getElementById('long').value = casa.long;
         document.getElementById('area_living15').value = casa.area_living15;

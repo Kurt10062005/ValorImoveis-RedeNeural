@@ -112,7 +112,7 @@ function preencherInformacoesImovel(marcador) {
     document.getElementById("casa_area_basement").value = dadosImovel.area_basement;
     document.getElementById("casa_ano_construcao").value = dadosImovel.ano_construcao;
     document.getElementById("casa_ano_reforma").value = dadosImovel.ano_reforma;
-    document.getElementById("casa_cep").value = dadosImovel.cep;
+    // document.getElementById("casa_cep").value = dadosImovel.cep;
     document.getElementById("casa_lat").value = dadosImovel.lat;
     document.getElementById("casa_long").value = dadosImovel.long;
     document.getElementById("casa_area_living15").value = dadosImovel.area_living15;

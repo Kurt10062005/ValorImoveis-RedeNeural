@@ -288,7 +288,7 @@ body {
    INFORMAÇÕES DOS CAMPOS
 ================================================== */
 .infoCampo {
-  position: relative; /* ADICIONA ESSA LINHA no seu */
+  position: relative; 
   background-color: #163a5c;
   color: white;
   border-radius: 50%;
@@ -308,13 +308,13 @@ body {
   color: white;
   border-radius: 8px;
   padding: 12px;
-  font-size: 25px;
+  font-size: 15px;
   line-height: 1.4;
   text-align: left;
   white-space: normal; /* pra não cortar o texto */
 
   position: absolute;
-  z-index: 9999; /* pra ficar por cima de tudo */
+  z-index: 9999; 
   left: 30px; /* abre pro lado direito da bolinha */
   top: 50%;
   transform: translateY(-50%);
