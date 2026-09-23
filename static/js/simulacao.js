@@ -20,7 +20,6 @@ async function gerarSimulacaoAleatoria() {
         }
 
         // Preenche os campos do formulário da direita (editáveis)
-        document.getElementById('id').value = casa.id;
         document.getElementById('quartos').value = casa.quartos;
         document.getElementById('banheiros').value = casa.banheiros;
         document.getElementById('area_living').value = casa.area_living;
@@ -38,7 +37,6 @@ async function gerarSimulacaoAleatoria() {
         document.getElementById('long').value = casa.long;
         document.getElementById('area_living15').value = casa.area_living15;
         document.getElementById('area_lote15').value = casa.area_lote15;
-        document.getElementById('preco_real').value = casa.preco_real;
 
     } catch (erro) {
         console.error('Erro ao gerar simulação:', erro);

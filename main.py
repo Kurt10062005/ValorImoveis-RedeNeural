@@ -24,7 +24,7 @@ scaler_y = joblib.load("modelos/scaler_y.pkl")
 colunas_entrada = joblib.load("modelos/colunas_entrada.pkl")
 
 # Carrega a base de dados das casas para simulação
-df_casas = pd.read_csv("dados/kc_house_data2_mediano_modificado.csv")
+df_casas = pd.read_csv("dados/kc_house_data2_moderadamente_modificado.csv")
 
 @app.get("/")
 def home(request: Request):
@@ -59,7 +59,7 @@ def simular_aleatorio():
         "long": float(casa_amostra["long"]),
         "area_living15": float(casa_amostra["sqft_living15"]),
         "area_lote15": float(casa_amostra["sqft_lot15"]),
-        "preco_real": float(casa_amostra["price"]),
+        #"preco_real": float(casa_amostra["price"]),
     }
     return dados_simulacao
 
@@ -127,7 +127,6 @@ def simular_aleatorio_mapa():
 
     # Dados da casa para mostrar no mapa
     dados_imovel = {
-        "id": int(casa_amostra["id"]),
         "quartos": float(casa_amostra["bedrooms"]),
         "banheiros": float(casa_amostra["bathrooms"]),
         "area_living": float(casa_amostra["sqft_living"]),

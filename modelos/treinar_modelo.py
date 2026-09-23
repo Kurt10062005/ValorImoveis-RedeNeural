@@ -14,7 +14,7 @@ import joblib
 import numpy as np
 
 # carrega os dados
-dados = pd.read_csv("../dados/kc_house_data3_muito_modificado.csv")
+dados = pd.read_csv("../dados/kc_house_data2_moderadamente_modificado.csv")
 
 # colunas de entrada
 colunas_entrada = [
@@ -46,7 +46,8 @@ y_train_norm = scaler_y.fit_transform(y_train.values.reshape(-1, 1)).ravel()
 
 # busca hiperparametros com Grid Search (!!!aprte q mais demora!!!)
 param_grid = {
-    "hidden_layer_sizes": [(34, 17)],
+    "hidden_layer_sizes": 
+    [(17, 17, 17)],
     "activation": ["relu", "tanh"],
     "alpha": [0.0001, 0.001],
     "learning_rate": ["constant", "adaptive"]

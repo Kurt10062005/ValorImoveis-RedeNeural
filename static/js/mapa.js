@@ -91,7 +91,6 @@ function preencherInformacoesImovel(marcador) {
     // ==================================================
     // DADOS DO IMÓVEL
     // ==================================================
-    document.getElementById("casa_id").value = dadosImovel.id;
     document.getElementById("casa_quartos").value = dadosImovel.quartos;
     document.getElementById("casa_banheiros").value = dadosImovel.banheiros;
     document.getElementById("casa_area_living").value = dadosImovel.area_living;
