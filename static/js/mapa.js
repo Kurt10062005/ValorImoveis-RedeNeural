@@ -96,7 +96,15 @@ function preencherInformacoesImovel(marcador) {
     document.getElementById("casa_area_living").value = dadosImovel.area_living;
     document.getElementById("casa_area_lote").value = dadosImovel.area_lote;
     document.getElementById("casa_andares").value = dadosImovel.andares;
-    document.getElementById("casa_waterfront").value = dadosImovel.waterfront == 1 ? "Sim" : "Não"; document.getElementById("casa_view").value = dadosImovel.view;
+    document.getElementById("casa_waterfront").value = dadosImovel.waterfront == 1 ? "Sim" : "Não"; 
+    const qualidade = {
+        0: "⭐",
+        1: "⭐⭐",
+        2: "⭐⭐⭐",
+        3: "⭐⭐⭐⭐",
+        4: "⭐⭐⭐⭐⭐",
+    };
+    document.getElementById("casa_view").value = qualidade[dadosImovel.view];
     const condicoes = {
         0: "C1 ➡️ Imóvel novo ou como novo",
         1: "C2 ➡️ Desgaste minimo de uso",
@@ -111,7 +119,6 @@ function preencherInformacoesImovel(marcador) {
     document.getElementById("casa_area_basement").value = dadosImovel.area_basement;
     document.getElementById("casa_ano_construcao").value = dadosImovel.ano_construcao;
     document.getElementById("casa_ano_reforma").value = dadosImovel.ano_reforma;
-    // document.getElementById("casa_cep").value = dadosImovel.cep;
     document.getElementById("casa_lat").value = dadosImovel.lat;
     document.getElementById("casa_long").value = dadosImovel.long;
     document.getElementById("casa_area_living15").value = dadosImovel.area_living15;

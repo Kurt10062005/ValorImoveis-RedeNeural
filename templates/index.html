@@ -14,6 +14,10 @@ AUTORES:
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <head>
+        <link rel="icon" type="image/png" href="/static/imagens/favicon.png">
+    </head>
 </head>
 
 <body>
@@ -73,7 +77,11 @@ AUTORES:
                         <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
-                                Informe o número de banheiros que deseja, podendo escolher quantos quiser!
+                                Informe o número de banheiros que deseja, podendo escolher quantos quiser! <br>
+                                ➡️ Banheiros completos: vaso + pia + chveiro + banheira (escala 1 em 1 (exemplo: 1, 2, 3...)) <br>
+                                ➡️ Banheiros 3/4: vaso + pia + chveiro  (escala 0,75 (exemplo: 1.75, 2.75, 3.75 ...)) <br>
+                                ➡️ Lavabo: vaso + pia  (escala 0,5 (exemplo: 1.5, 2.5, 3.5 ...)) <br>
+                                ➡️ Sanitário: vaso (escala 0,25 (exemplo 1.25, 2.25, 3.25 ...)) <br>
                             </span>
                         </span>
                         Banheiros
@@ -144,12 +152,21 @@ AUTORES:
                         <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
-                                Informe a qualidade da vista do imóvel. Nota de 0 a 4
+                                Informe a qualidade da vista do imóvel. Nota de 1 a 5 estrelas
                             </span>
                         </span>
                         Qualidade da vista da casa
                     </label>
-                    <input type="number" id="view" name="view" min="0" max="4" step="1">
+                    <select id="view" name="view" required>
+                        <option value="" selected disabled hidden>
+                            Qqualidade da vista do imóvel. Nota de 1 a 5 estrelas
+                        </option>
+                        <option value="0">⭐</option>
+                        <option value="1">⭐⭐</option>
+                        <option value="2">⭐⭐⭐</option>
+                        <option value="3">⭐⭐⭐⭐</option>
+                        <option value="4">⭐⭐⭐⭐⭐</option>
+                    </select>
                 </div>
 
                 <div class="campo-form">
@@ -180,18 +197,18 @@ AUTORES:
                         <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
-                                Informe a nota da avaliação da Prefeitura. Avaliação de 1 a 13
-                                Avaliação 1 a 3: Abaixo do padrão
-                                Avaliação 4: Construção de baixa qualidade
-                                Avaliação 5: Econômica / Simples
-                                Avaliação 6: Padrão minimo
-                                Avaliação 7: Média / padrão
-                                Avaliação 8: Acima da média
-                                Avaliação 9: Desing Arquitetonico Superior
-                                Avaliação 10: Alta Qualidade
-                                Avaliação 11: Luxo Customizado
-                                Avaliação 12: Alto padrão
-                                Avaliação 13: Mansão
+                                Informe a nota da avaliação da Prefeitura. Avaliação de 1 a 13 <br>
+                                ➡️ Avaliação 1 a 3: Abaixo do padrão <br>
+                                ➡️ Avaliação 4: Construção de baixa qualidade <br>
+                                ➡️ Avaliação 5: Econômica / Simples <br>
+                                ➡️ Avaliação 6: Padrão mínimo <br>
+                                ➡️ Avaliação 7: Média / padrão <br>
+                                ➡️ Avaliação 8: Acima da média <br>
+                                ➡️ Avaliação 9: Desing Arquitetonico Superior <br>
+                                ➡️ Avaliação 10: Alta Qualidade <br>
+                                ➡️ Avaliação 11: Luxo Customizado <br>
+                                ➡️ Avaliação 12: Alto padrão <br>
+                                ➡️ Avaliação 13: Mansão 
                             </span>
                         </span>
                         Avaliação da Prefeitura
@@ -259,7 +276,7 @@ AUTORES:
                         <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
-                                Informe a latitude do imóvel
+                                Informe a latitude do imóvel (min = 47,2 e max = 47,8)
                             </span>
                         </span>
                         Latitude do imóvel
@@ -272,7 +289,7 @@ AUTORES:
                         <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
-                                Informe a longitude do imóvel
+                                Informe a longitude do imóvel (min = -123 e max = -121)
                             </span>
                         </span>
                         Longitude do imóvel
@@ -361,7 +378,7 @@ AUTORES:
                 <input type="text" id="casa_waterfront" readonly>
 
                 <label for="casa_view">Qualidade da vista da casa</label>
-                <input type="number" id="casa_view" readonly>
+                <input type="text" id="casa_view" readonly>
 
                 <label for="casa_condicao">Condição</label>
                 <input type="text" id="casa_condicao" readonly>

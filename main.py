@@ -59,7 +59,6 @@ def simular_aleatorio():
         "long": float(casa_amostra["long"]),
         "area_living15": float(casa_amostra["sqft_living15"]),
         "area_lote15": float(casa_amostra["sqft_lot15"]),
-        #"preco_real": float(casa_amostra["price"]),
     }
     return dados_simulacao
 
