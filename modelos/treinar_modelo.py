@@ -47,7 +47,7 @@ y_train_norm = scaler_y.fit_transform(y_train.values.reshape(-1, 1)).ravel()
 # busca hiperparametros com Grid Search (!!!aprte q mais demora!!!)
 param_grid = {
     "hidden_layer_sizes": 
-    [(17, 17, 17)],
+    [(8, 17)],
     "activation": ["relu", "tanh"],
     "alpha": [0.0001, 0.001],
     "learning_rate": ["constant", "adaptive"]
@@ -84,7 +84,6 @@ erros_percentuais = np.abs(
 ) * 100
 
 # métricas
-mae = mean_absolute_error(y_test, y_pred)
 rmse = np.sqrt(mean_squared_error(y_test, y_pred))
 mape = np.mean(erros_percentuais)
 mediana = np.median(erros_percentuais)
@@ -92,7 +91,6 @@ p90 = np.percentile(erros_percentuais, 90)
 p95 = np.percentile(erros_percentuais, 95)
 pior = np.max(erros_percentuais)
 
-print(f"MAE: R$ {mae:,.2f}")
 print(f"RMSE: R$ {rmse:,.2f}")
 print(f"MAPE: {mape:.2f}%")
 print(f"Mediana do erro: {mediana:.2f}%")
