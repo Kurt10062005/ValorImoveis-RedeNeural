@@ -98,18 +98,18 @@ function preencherInformacoesImovel(marcador) {
     document.getElementById("casa_andares").value = dadosImovel.andares;
     document.getElementById("casa_waterfront").value = dadosImovel.waterfront == 1 ? "Sim" : "Não"; 
     const qualidade = {
-        0: "⭐",
-        1: "⭐⭐",
-        2: "⭐⭐⭐",
-        3: "⭐⭐⭐⭐",
-        4: "⭐⭐⭐⭐⭐",
+        0: "⭐ ➡️ Vista ruim",
+        1: "⭐⭐ ➡️ Vista limitada",
+        2: "⭐⭐⭐ ➡️ Vista padrão",
+        3: "⭐⭐⭐⭐ ➡️ Vista boa",
+        4: "⭐⭐⭐⭐⭐ ➡️ Vista premium",
     };
     document.getElementById("casa_view").value = qualidade[dadosImovel.view];
     const condicoes = {
         0: "C1 ➡️ Imóvel novo ou como novo",
-        1: "C2 ➡️ Desgaste minimo de uso",
+        1: "C2 ➡️ Desgaste mínimo de uso",
         2: "C3 ➡️ Desgaste normal do tempo",
-        3: "C4 ➡️ Imóvel habitavel e funcionel",
+        3: "C4 ➡️ Imóvel habitável e funcional",
         4: "C5 ➡️ Precisa de grandes reparos urgente",
         5: "C6 ➡️ Danos severos ou total falta de condições de moradia"
     };

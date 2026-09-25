@@ -64,7 +64,7 @@ AUTORES:
                         <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
-                                Informe o número de quartos que deseja, podendo escolher quantos quiser!
+                                Informe o número de quartos que deseja, escolha quantos quiser!
                             </span>
                         </span>
                         Quartos
@@ -77,7 +77,7 @@ AUTORES:
                         <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
-                                Informe o número de banheiros que deseja, podendo escolher quantos quiser! <br>
+                                Informe o número de banheiros que deseja, escolha quantos desejar! <br>
                                 ➡️ Banheiros completos: vaso + pia + chuveiro + banheira (escala 1 em 1 (exemplo: 1, 2, 3...)) <br>
                                 ➡️ Banheiros 3/4: vaso + pia + chuveiro  (escala 0,75 (exemplo: 1.75, 2.75, 3.75 ...)) <br>
                                 ➡️ Lavabo: vaso + pia  (escala 0,5 (exemplo: 1.5, 2.5, 3.5 ...)) <br>
@@ -121,8 +121,8 @@ AUTORES:
                             ❔
                             <span class="caixaTexto">
                                 Informe a quantidade de andares (min = 1 e max = 5) <br>
-                                ➡️ Andar completo: Andar que tem tamanho igual ao andar de baixo (Andares: 1, 2, 3...) <br>
-                                ➡️ Meio Andar: Andar que não cobre o andar de baixo, ou seja é um andar menor, geralmente é um espaço livre entre as escadas ou um deposito (Andares: 1,5; 2,5; 3,5...)
+                                ➡️ Andar completo: Cobre a área total do andar inferior (Andares: 1, 2, 3...) <br>
+                                ➡️ Meio Andar: Cobre a área parcial do andar inferior, ou seja é um andar menor, geralmente é um espaço livre entre as escadas ou um depósito (Andares: 1,5; 2,5; 3,5...)
                             </span>
                         </span>
                         Andares
@@ -135,14 +135,14 @@ AUTORES:
                         <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
-                                Informe se o imóvel deve ter vista para lagos / rios / mar
+                                Informe se deseja que o imóvel tenha vista para lagos / rios / mar
                             </span>
                         </span>
                         Vista para a água
                     </label>
                     <select id="waterfront" name="waterfront" required>
                         <option value="" selected disabled hidden>
-                            Deseja algum imovel com vista ao mar ou lagos ou rios
+                            Deseja algum imóvel com vista para o mar ou lagos ou rios?
                         </option>
                         <option value="0">Não</option>
                         <option value="1">Sim</option>
@@ -155,11 +155,11 @@ AUTORES:
                             ❔
                             <span class="caixaTexto">
                                 Informe a qualidade da vista do imóvel. Nota de 1 a 5 estrelas <br>
-                                ⭐ ➡️ Vista ruim (Vista obstruída, pra muro, corredor, sem luz. Desvaloriza o imóvel) <br>
+                                ⭐ ➡️ Vista ruim (Vista obstruída, para muro, corredor, sem luz. Desvaloriza o imóvel) <br>
                                 ⭐⭐ ➡️ Vista limitada (Vista comum, mas sem atrativo. Rua movimentada, estacionamento, telhado dos outros imóveis) <br>
-                                ⭐⭐⭐ ➡️ Vista padrão / ok (Vista aberta normal, sem nada feio na frente. Bairro, condomínio, rua arborizada) <br>
-                                ⭐⭐⭐⭐ ➡️ Vista boa (Vista valorizada. Tem verde, parque, parte da cidade, mais privacidade e luz) <br>
-                                ⭐⭐⭐⭐⭐ ➡️ Vista premium / excepcional (Vista panorâmica que vende a casa sozinha. Lago, mar, skyline, vale, pôr do sol livre) <br>
+                                ⭐⭐⭐ ➡️ Vista padrão (Vista aberta normal, sem poluição visual. Bairro, condomínio, rua arborizada) <br>
+                                ⭐⭐⭐⭐ ➡️ Vista boa (Vista valorizada. Possui área verde, parque, parte da cidade, mais privacidade e luz) <br>
+                                ⭐⭐⭐⭐⭐ ➡️ Vista premium/excepcional (Vista panorâmica que vende a casa sozinha. Lago, mar, skyline, vale, pôr do sol livre) <br>
                             </span>
                         </span>
                         Qualidade da vista da casa <br>
@@ -168,11 +168,11 @@ AUTORES:
                         <option value="" selected disabled hidden>
                             Qualidade da vista do imóvel. Nota de 1 a 5 estrelas
                         </option>
-                        <option value="0">⭐</option>
-                        <option value="1">⭐⭐</option>
-                        <option value="2">⭐⭐⭐</option>
-                        <option value="3">⭐⭐⭐⭐</option>
-                        <option value="4">⭐⭐⭐⭐⭐</option>
+                        <option value="0">⭐ ➡️ Vista ruim</option>
+                        <option value="1">⭐⭐ ➡️ Vista limitada</option>
+                        <option value="2">⭐⭐⭐ ➡️ Vista padrão</option>
+                        <option value="3">⭐⭐⭐⭐ ➡️ Vista boa</option>
+                        <option value="4">⭐⭐⭐⭐⭐ ➡️ Vista premium</option>
                     </select>
                 </div>
 
@@ -191,10 +191,10 @@ AUTORES:
                             Qual o nivel de avaliação da condição do imóvel
                         </option>
                         <option value="0">C1 ➡️ Imóvel novo ou como novo</option>
-                        <option value="1">C2 ➡️ Desgaste minimo de uso</option>
+                        <option value="1">C2 ➡️ Desgaste mínimo de uso</option>
                         <option value="2">C3 ➡️ Desgaste normal do tempo</option>
-                        <option value="3">C4 ➡️ Imóvel habitavel e funcional</option>
-                        <option value="4">C5 ➡️ Precisa de grandes reparos urgente</option>
+                        <option value="3">C4 ➡️ Imóvel habitável e funcional</option>
+                        <option value="4">C5 ➡️ Precisa de grandes reparos: urgente</option>
                         <option value="5">C6 ➡️ Danos severos ou total falta de condições de moradia</option>
                     </select>
                 </div>
@@ -207,11 +207,11 @@ AUTORES:
                                 Informe a nota da avaliação da Prefeitura. Avaliação de 1 a 13 <br>
                                 ➡️ Avaliação 1 a 3: Abaixo do padrão <br>
                                 ➡️ Avaliação 4: Construção de baixa qualidade <br>
-                                ➡️ Avaliação 5: Econômica / Simples <br>
+                                ➡️ Avaliação 5: Econômica/Simples <br>
                                 ➡️ Avaliação 6: Padrão mínimo <br>
-                                ➡️ Avaliação 7: Média / padrão <br>
+                                ➡️ Avaliação 7: Média/padrão <br>
                                 ➡️ Avaliação 8: Acima da média <br>
-                                ➡️ Avaliação 9: Desing Arquitetonico Superior <br>
+                                ➡️ Avaliação 9: Desing Arquitetônico Superior <br>
                                 ➡️ Avaliação 10: Alta Qualidade <br>
                                 ➡️ Avaliação 11: Luxo Customizado <br>
                                 ➡️ Avaliação 12: Alto padrão <br>
