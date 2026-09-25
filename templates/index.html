@@ -79,7 +79,7 @@ AUTORES:
                             <span class="caixaTexto">
                                 Informe o número de banheiros que deseja, podendo escolher quantos quiser! <br>
                                 ➡️ Banheiros completos: vaso + pia + chveiro + banheira (escala 1 em 1 (exemplo: 1, 2, 3...)) <br>
-                                ➡️ Banheiros 3/4: vaso + pia + chveiro  (escala 0,75 (exemplo: 1.75, 2.75, 3.75 ...)) <br>
+                                ➡️ Banheiros 3/4: vaso + pia + chuveiro  (escala 0,75 (exemplo: 1.75, 2.75, 3.75 ...)) <br>
                                 ➡️ Lavabo: vaso + pia  (escala 0,5 (exemplo: 1.5, 2.5, 3.5 ...)) <br>
                                 ➡️ Sanitário: vaso (escala 0,25 (exemplo 1.25, 2.25, 3.25 ...)) <br>
                             </span>
@@ -152,14 +152,19 @@ AUTORES:
                         <span class="infoCampo">
                             ❔
                             <span class="caixaTexto">
-                                Informe a qualidade da vista do imóvel. Nota de 1 a 5 estrelas
+                                Informe a qualidade da vista do imóvel. Nota de 1 a 5 estrelas <br>
+                                ⭐ ➡️ Vista ruim (Vista obstruída, pra muro, corredor, sem luz. Desvaloriza o imóvel) <br>
+                                ⭐⭐ ➡️ Vista limitada (Vista comum, mas sem atrativo. Rua movimentada, estacionamento, telhado dos outros imóveis) <br>
+                                ⭐⭐⭐ ➡️ Vista padrão / ok (Vista aberta normal, sem nada feio na frente. Bairro, condomínio, rua arborizada) <br>
+                                ⭐⭐⭐⭐ ➡️ Vista boa (Vista valorizada. Tem verde, parque, parte da cidade, mais privacidade e luz) <br>
+                                ⭐⭐⭐⭐⭐ ➡️ Vista premium / excepcional (Vista panorâmica que vende a casa sozinha. Lago, mar, skyline, vale, pôr do sol livre) <br>
                             </span>
                         </span>
-                        Qualidade da vista da casa
+                        Qualidade da vista da casa <br>
                     </label>
                     <select id="view" name="view" required>
                         <option value="" selected disabled hidden>
-                            Qqualidade da vista do imóvel. Nota de 1 a 5 estrelas
+                            Qualidade da vista do imóvel. Nota de 1 a 5 estrelas
                         </option>
                         <option value="0">⭐</option>
                         <option value="1">⭐⭐</option>
@@ -186,7 +191,7 @@ AUTORES:
                         <option value="0">C1 ➡️ Imóvel novo ou como novo</option>
                         <option value="1">C2 ➡️ Desgaste minimo de uso</option>
                         <option value="2">C3 ➡️ Desgaste normal do tempo</option>
-                        <option value="3">C4 ➡️ Imóvel habitavel e funcionall</option>
+                        <option value="3">C4 ➡️ Imóvel habitavel e funcional</option>
                         <option value="4">C5 ➡️ Precisa de grandes reparos urgente</option>
                         <option value="5">C6 ➡️ Danos severos ou total falta de condições de moradia</option>
                     </select>
@@ -281,7 +286,7 @@ AUTORES:
                         </span>
                         Latitude do imóvel
                     </label>
-                    <input type="number" id="lat" name="lat" step="0.000001">
+                    <input type="number" id="lat" name="lat" min="47.2" max="47.8" step="0.000001">
                 </div>
 
                 <div class="campo-form">
@@ -294,7 +299,7 @@ AUTORES:
                         </span>
                         Longitude do imóvel
                     </label>
-                    <input type="number" id="long" name="long" step="0.000001">
+                    <input type="number" id="long" name="long" min="-123" max="121" step="0.000001">
                 </div>
 
                 <div class="campo-form">
@@ -437,7 +442,10 @@ AUTORES:
 
         anoReforma.addEventListener("input", function () {
             if (anoConstrucao.value && anoReforma.value) {
-                if (Number(anoReforma.value) < Number(anoConstrucao.value)) {
+                if (Number(anoReforma.value) == 0) {
+                    anoReforma.setCustomValidity("");
+                }
+                else if (Number(anoReforma.value) < Number(anoConstrucao.value) || Number(anoReforma.value) == 0) {
                     anoReforma.setCustomValidity(
                         "O ano da reforma não pode ser anterior ao ano de construção."
                     );
